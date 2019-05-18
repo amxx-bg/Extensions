@@ -1,0 +1,32 @@
+{% include 'ucp_header.html' %}
+
+<form id="evilsystem_forumextras_ucp" name="evilsystem_forumextras_ucp" method="post" action="{{ U_UCP_ACTION }}">
+
+	<h2>{{ lang('UCP_FORUMEXTRAS_CHANGERANK_LABEL') }}</h2>
+
+	<div class="panel">
+		<div class="inner">
+			<fieldset>
+				{% if S_ERROR %}
+					<p class="error">{{ ERROR_MSG }}</p>
+				{% endif %}
+
+				<dl>
+					<dt><label for="user_forumextras0">{{ lang('UCP_FORUMEXTRAS_CHANGERANK_LABEL') ~ lang('COLON') }}</label><br /><span>{{ lang('UCP_FORUMEXTRAS_CHANGERANK_DESCRIPTION') }}</span></dt>
+					<dd><input type="text" class="inputbox autowidth" size="20" maxlength="100" name="user_extras_rank" {% if S_USER_CHANGERANK %} value="{{ S_USER_CHANGERANK }}" {% endif %}></dd>
+				</dl>
+			</fieldset>
+		</div>
+	</div>
+	<fieldset>
+		<dl>
+			<dt>&nbsp;</dt>
+			<dd><input type="submit" name="submit" id="submit" class="button1" value="{{ lang('SUBMIT') }}" tabindex="2" />&nbsp;
+				<input type="reset" name="reset" class="button2" value="{{ lang('RESET') }}" /></dd>
+		</dl>
+		{{ S_HIDDEN_FIELDS }}
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'ucp_footer.html' %}

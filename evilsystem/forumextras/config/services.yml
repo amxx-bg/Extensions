@@ -1,0 +1,21 @@
+services:
+    evilsystem.forumextras.controller.ucp:
+        class: evilsystem\forumextras\controller\ucp_controller
+        arguments:
+            - '@dbal.conn'
+            - '@language'
+            - '@request'
+            - '@template'
+            - '@user'
+
+    evilsystem.forumextras.listener:
+        class: evilsystem\forumextras\event\main_listener
+        arguments:
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%' 
+        tags:
+            - { name: event.listener }
